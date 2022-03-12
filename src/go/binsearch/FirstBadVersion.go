@@ -56,15 +56,14 @@ func main() {
 }
 
 func firstBadVersion(n int) int {
-	var pivot int
 	left := 1
-	right := n - 1
-	for left <= right {
-		pivot = left + (right-left)/2
-		if isBadVersion(pivot) {
-			right = pivot - 1
+	right := n
+	for left < right {
+		var mid = left + (right-left)/2
+		if isBadVersion(mid) {
+			right = mid
 		} else {
-			left = pivot + 1
+			left = mid + 1
 		}
 	}
 	return left
